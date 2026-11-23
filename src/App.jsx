@@ -1,17 +1,18 @@
+import { useState } from 'react'
 import './App.css'
-import Header from './components/Header'
-import HomePage from './components/HomePage'
 import LoginPage from './components/LoginPage'
+import OfficeList from './components/OfficeList'
 
 function App() {
+  const [page, setPage] = useState('offices')
 
   return (
     <div>
-      <div>
-        <Header />
-        <HomePage />
-        <LoginPage />
-      </div>
+      <nav className="page-nav">
+        <button type="button" onClick={() => setPage('offices')}>Offices</button>
+        <button type="button" onClick={() => setPage('login')}>Login</button>
+      </nav>
+      {page === 'offices' ? <OfficeList /> : <LoginPage />}
     </div>
   )
 }
